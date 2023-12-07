@@ -1,5 +1,6 @@
 import { AppState } from "../AppState.js"
 import { jumbledService } from "../services/jumbleService.js"
+import { getFormData } from "../utils/FormHandler.js"
 
 export class jumbleController {
 
@@ -7,6 +8,7 @@ export class jumbleController {
     constructor() {
         this.drawJumble()
         AppState.on('activeJumble', this.drawActiveJumble)
+        AppState.on('jumbles', this.drawJumble)
 
     }
 
@@ -28,6 +30,13 @@ export class jumbleController {
     drawActiveJumble() {
         const jumble = AppState.activeJumble
         document.getElementById('active-jumble').innerHTML = jumble.ActiveTemplate
+    }
+    submitJumble() {
+        event.preventDefault()
+        let form = event.target
+        const userJumble = getFormData(form)
+        console.log(userJumble)
+        jumbledService.submitJumble(userJumble)
     }
     checkSubmission() {
         //@ts-ignore

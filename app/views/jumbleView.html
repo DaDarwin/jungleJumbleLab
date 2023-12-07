@@ -27,9 +27,15 @@
     <div class="col-4">
         <h3>Jumbles!</h3>
         <div class="row" id="draw-jumble"></div>
-        <form action="">
+        <form onsubmit="app.jumbleController.submitJumble()">
+            <input class="col-12" type="text" name="name" placeholder="Name">
+            <textarea class="col-12" name="body" id="user-jumble" placeholder="Jumbling Jumble" rows="10">
 
+            </textarea>
+            <button class="col-12 btn btn-danger">Submit</button>
         </form>
+
+
     </div>
     </div>
 </section>
